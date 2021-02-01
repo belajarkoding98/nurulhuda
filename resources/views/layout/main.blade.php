@@ -46,11 +46,15 @@
     <!-- Datepicker -->
     <link rel="stylesheet" href="{!! asset('assets/plugin/datepicker/css/bootstrap-datepicker.min.css') !!}">
 
+
     <!-- Select2 -->
     <link rel="stylesheet" href="{!! asset('assets/plugin/select2/css/select2.min.css') !!}">
 
     <!-- Sweet Alert -->
     <link rel="stylesheet" href="{!! asset('assets/plugin/sweet-alert/sweetalert.css') !!}">
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{!! asset('assets/plugin/toastr/toastr.css') !!}">
 
 </head>
 
@@ -423,7 +427,7 @@
     <script src="{!! asset('assets/plugin/percircle/js/percircle.js') !!}"></script>
 
     <!-- Google Chart -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js') !!}"></script>
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js') !!}"></script> -->
 
     <!-- Chartist Chart -->
     <script src="{!! asset('assets/plugin/chart/chartist/chartist.min.js') !!}"></script>
@@ -453,7 +457,7 @@
     <script src="{!! asset('assets/plugin/datepicker/js/bootstrap-datepicker.min.js') !!}"></script>
 
     <!-- Demo Scripts -->
-    <script src="{!! asset('assets/scripts/form.demo.min.js') !!}"></script>
+    <!-- <script src="{!! asset('assets/scripts/form.demo.min.js') !!}"></script> -->
 
     <!-- Select2 -->
     <script src="{!! asset('assets/plugin/select2/js/select2.min.js') !!}"></script>
@@ -461,10 +465,36 @@
     <!-- Flex Datalist -->
     <script src="{!! asset('assets/plugin/flexdatalist/jquery.flexdatalist.min.js') !!}"></script>
 
+    <!-- Validator -->
+    <script src="{{ asset('/assets/plugin/validator/validator.min.js') }}"></script>
+
+    <!-- Toastr -->
+    <script src="{{ asset('assets/plugin/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/scripts/toastr.demo.min.js') }}"></script>
 
 
+    <script>
+    $(document).ready(function() {
 
-
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "rtl": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "showDuration": 300,
+            "hideDuration": 1000,
+            "timeOut": 3000,
+            "extendedTimeOut": 1000,
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    });
+    </script>
 </body>
 
 </html>

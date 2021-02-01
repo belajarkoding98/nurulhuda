@@ -35,5 +35,6 @@ Route::get('/siswa-paud', 'SiswaController@siswa_paud');
 // ROUTES SISWA MA
 Route::get('/siswa-ma', 'SiswaController@index_siswa_ma');
 Route::get('/siswa-ma/create/', 'SiswaController@create_siswa_ma');
-Route::get('/siswa-ma/{nis}', 'SiswaController@show_siswa_ma');
+Route::get('/siswa-ma/{id}', 'SiswaController@show_siswa_ma');
 Route::post('/siswa-ma', 'SiswaController@store_siswa_ma');
+Route::delete('/siswa-ma/{id}', 'SiswaController@destroy_siswa_ma');

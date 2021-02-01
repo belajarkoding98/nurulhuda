@@ -44,6 +44,13 @@ class SiswaController extends Controller
      */
     public function store_siswa_ma(Request $request)
     {
+        //validasi
+        $request->validate([
+            'nis' => 'required',
+            'nama_siswa' => 'required',
+            'tempat' => 'required',
+        ]);
+
         //Cara pertama
         Siswa_ma_model::create([
             'nis' => $request->nis,
@@ -69,7 +76,7 @@ class SiswaController extends Controller
             'alamat_ortu' => $request->alamat_ortu,
         ]);
 
-        return redirect('/siswa-ma')->with('status', 'toastr["success"]("Data Siswa Baru Madrasah Aliyah Berhasil ditambahkan!", "Data Ditambahkan")');
+        return redirect('/siswa-ma')->with('status', '<script>toastr["success"]("Data Siswa Madrasah Aliyah atasnama ' . $request->nama_siswa . ' Berhasil ditambahkan!", "Data Disimpan")</script>');
     }
 
     /**
@@ -78,9 +85,10 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show_siswa_ma($nis)
+    public function show_siswa_ma($id)
     {
-        $data_siswa_ma = Siswa_ma_model::where('nis', $nis)->first();
+        // $data_siswa_ma = Siswa_ma_model::
+        $data_siswa_ma = Siswa_ma_model::where('id_siswa_ma', $id)->first();
         return view('sikadu.v_detail_siswa_ma', compact('data_siswa_ma'));
     }
 
@@ -113,8 +121,10 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy_siswa_ma($id)
     {
-        //
+        Siswa_ma_model::where('id_siswa_ma', $id)->delete();
+        $data_siswa_ma = Siswa_ma_model::where('id_siswa_ma', $id)->first();
+        return redirect('/siswa-ma')->with('status', '<script>toastr["error"]("Data Siswa Madrasah Aliyah atasnama ' . $data_siswa_ma['nama_siswa'] . ' Berhasil dihapus!", "Data Dihapus")</script>');
     }
 }

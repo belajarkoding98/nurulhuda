@@ -4,21 +4,13 @@
 
 
 @section('container')
+@include('plugin.toastr')
 <!-- /#message-popup -->
 <div id="wrapper">
     <div class="main-content">
-        <!-- @if (session('status')) -->
-        <script>
-        // {
-        //     {
-        //         session('status')
-        //     }
-        // }
-        $(function() {
-            toastr["success"]("Data Siswa Baru Madrasah Aliyah Berhasil ditambahkan!", "Data Ditambahkan");
-        });
-        </script>
-        <!-- @endif -->
+        @if (session('status'))
+        <?php echo session('status') ?>
+        @endif
 
         <div class="row small-spacing">
             <div class="col-xs-12">
@@ -72,15 +64,19 @@
                                 <td>{{$dsma->thn_masuk}}</td>
                                 <td>{{$dsma->tingkat}}</td>
                                 <td>
-                                    <a href="{{ url('/siswa-ma', $dsma->nis) }}" type="button"
+                                    <a href="{{ url('/siswa-ma', $dsma->id_siswa_ma) }}" type="button"
                                         class="btn btn-social waves-effect waves-light btn-primary" title="Detail"><i
                                             class="ico fa fa-info"></i></a>
                                     <a href="#" type="button"
                                         class="btn btn-social waves-effect waves-light btn-warning" title="Edit"><i
                                             class="ico fa fa-edit"></i></a>
-                                    <a href="{{ url('/siswa-ma', ['nis' => $dsma->nis]) }}" type="button"
-                                        class="btn btn-social waves-effect waves-light btn-danger" title="Hapus"><i
-                                            class="ico fa fa-trash"></i></a>
+                                    <form action="{{ url('/siswa-ma', $dsma->id_siswa_ma) }}" method="post"
+                                        style="display:inline;">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-social waves-effect waves-light btn-danger"
+                                            title="Hapus"><i class="ico fa fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

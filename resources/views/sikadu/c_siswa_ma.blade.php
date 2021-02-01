@@ -18,22 +18,25 @@
                                 <div class="form-group">
                                     <label for="inp-type-1" class="col-sm-3 control-label">NIS</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inp-type-1" name="nis"
-                                            placeholder="Nomor Induk Siswa">
+                                        <input type="text" class="form-control is-invalid" id="inp-type-1" name="nis"
+                                            placeholder="Nomor Induk Siswa" value="{{ old('nis') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inp-type-1" class="col-sm-3 control-label">Nama Siswa</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-9 @error('nama_siswa') has-error form-with-icon @enderror">
                                         <input type="text" class="form-control" id="inp-type-1" name="nama_siswa"
-                                            placeholder="Nama Lengkap siswa">
+                                            placeholder="Nama Lengkap siswa" alue="{{ old('nama_siswa') }}">
+                                        @error('nama_siswa')
+                                        <i class="fa fa-times item-icon item-icon-right"></i>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inp-type-1" class="col-sm-3 control-label">Tempat Tanggal Lahir</label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control" id="inp-type-1" name="tempat"
-                                            placeholder="Tempat">
+                                            placeholder="Tempat" alue="{{ old('tempat') }}">
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="input-group">
