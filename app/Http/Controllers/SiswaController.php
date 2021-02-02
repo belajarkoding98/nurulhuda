@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Siswa_ma_model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class SiswaController extends Controller
@@ -123,8 +124,11 @@ class SiswaController extends Controller
      */
     public function destroy_siswa_ma($id)
     {
-        Siswa_ma_model::where('id_siswa_ma', $id)->delete();
-        $data_siswa_ma = Siswa_ma_model::where('id_siswa_ma', $id)->first();
-        return redirect('/siswa-ma')->with('status', '<script>toastr["error"]("Data Siswa Madrasah Aliyah atasnama ' . $data_siswa_ma['nama_siswa'] . ' Berhasil dihapus!", "Data Dihapus")</script>');
+        // Siswa_ma_model::where('id_siswa_ma', $id)->delete();
+        // $data_siswa_ma = Siswa_ma_model::where('id_siswa_ma', $id)->all();
+        $data_siswa_ma = DB::table('tb_siswa_ma')->where('id_siswa_ma', $id)->first();
+
+        // dd($data_siswa_ma);
+        return redirect('/siswa-ma')->with('status', '<script>toastr["error"]("Data Siswa Madrasah Aliyah atasnama ' . $data_siswa_ma->nama_siswa . ' Berhasil dihapus!", "Data Dihapus")</script>');
     }
 }

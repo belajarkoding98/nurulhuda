@@ -5,7 +5,37 @@
 
 @section('container')
 @include('plugin.toastr')
-<!-- /#message-popup -->
+<!-- /#message-modal -->
+
+
+<div class="modal fade" id="boostrapModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-2">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel-2">Hapus Data</h4>
+            </div>
+            <div class="modal-body">
+                <p>Apakah anda yakin akan menghapus data siswa <strong id="name-student"></strong> ?</p>
+            </div>
+            <div class="modal-footer">
+                <form action="" id="formdelete" method="post" style="display:inline;">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm waves-effect waves-light">Hapus</button>
+                    <!-- </form> -->
+                    <button type="button" class="btn btn-default btn-sm waves-effect waves-light"
+                        data-dismiss="modal">Batal</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end message modal -->
 <div id="wrapper">
     <div class="main-content">
         @if (session('status'))
@@ -70,13 +100,10 @@
                                     <a href="#" type="button"
                                         class="btn btn-social waves-effect waves-light btn-warning" title="Edit"><i
                                             class="ico fa fa-edit"></i></a>
-                                    <form action="{{ url('/siswa-ma', $dsma->id_siswa_ma) }}" method="post"
-                                        style="display:inline;">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="btn btn-social waves-effect waves-light btn-danger"
-                                            title="Hapus"><i class="ico fa fa-trash"></i></button>
-                                    </form>
+                                    <button type="button" data-toggle="modal" data-target="#boostrapModal-3"
+                                        data-id="{{$dsma->id_siswa_ma}}" data-name="{{$dsma->nama_siswa}}"
+                                        class="btn btn-social waves-effect waves-light btn-danger addAttr"
+                                        title="Hapus"><i class="ico fa fa-trash"></i></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -98,4 +125,13 @@
         </script>
         <!-- /.main-content -->
     </div>
+    <script>
+    $('.addAttr').click(function() {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var action = "{{ url('/siswa-ma') }}/" + id;
+        $('#formdelete').prop('action', decodeURIComponent(action));
+        $('#name-student').text(name);
+    });
+    </script>
     @endsection
