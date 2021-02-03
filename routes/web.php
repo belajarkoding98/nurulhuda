@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('sikadu/index');
+    return view('ppdb/calonsiswa/index');
 });
 
 Route::get('/login', function () {
