@@ -17,9 +17,17 @@ Route::get('/', function () {
     return view('ppdb/calonsiswa/index');
 });
 
-Route::get('/login', function () {
-    return view('index');
-});
+// Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+// Route::get('/', function () {
+//     return view('sikadu/index');
+// });
+
+// Route::get('/login', function () {
+//     return view('index');
+// });
 
 // Route::get('/about', function () {
 //     $nama = "Ponpes Nurul Huda Kertawangunan";
