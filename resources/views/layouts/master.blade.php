@@ -28,10 +28,11 @@
         <div id="wrapper">
             <div class="main-content">
                 @yield('container')
+                {{-- Footer --}}
+                @include('layouts.partials.footer')
             </div>
         </div>
 
-        @include('layouts.partials.footer')
     </body>
 
     {{-- Script External --}}

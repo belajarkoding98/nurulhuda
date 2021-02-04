@@ -56,3 +56,11 @@
 <!-- Toastr -->
 <script src="{{ asset('assets/plugin/toastr/toastr.min.js') }}"></script>
 <script src="{{ asset('assets/scripts/toastr.demo.min.js') }}"></script>
+
+<!-- Jquery UI -->
+<script src="{{ asset('assets/plugin/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/plugin/jquery-ui/jquery.ui.touch-punch.min.js') }}"></script>
+
+<!-- Dropify -->
+<script src="{!! asset('assets/plugin/dropify/js/dropify.min.js') !!}"></script>
+<script src="{!! asset('assets/scripts/fileUpload.demo.min.js') !!}"></script>

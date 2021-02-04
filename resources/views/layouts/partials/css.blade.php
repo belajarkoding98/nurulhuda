@@ -40,3 +40,6 @@
 
     <!-- Toastr -->
     <link rel="stylesheet" href="{!! asset('assets/plugin/toastr/toastr.css') !!}">    
+
+    	<!-- Dropify -->
+	<link rel="stylesheet" href="{!! asset('assets/plugin/dropify/css/dropify.min.css') !!}">

@@ -16,18 +16,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('ppdb/calonsiswa/index');
 });
+Route::get('/biaya', function () {
+    return view('ppdb/calonsiswa/biaya');
+});
+Route::get('/validasi', function () {
+    return view('ppdb/calonsiswa/validasi');
+});
+Route::get('/upload', function () {
+    return view('ppdb/calonsiswa/upload');
+});
 
 // Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 
 // Route::get('/', function () {
 //     return view('sikadu/index');
 // });
 
-// Route::get('/login', function () {
-//     return view('index');
-// });
+Route::get('/login', function () {
+    return view('index');
+});
 
 // Route::get('/about', function () {
 //     $nama = "Ponpes Nurul Huda Kertawangunan";
